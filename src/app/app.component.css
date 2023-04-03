@@ -11,6 +11,7 @@
   .column {
     flex: 1;
     min-width: 300px;
+    height: 90vh;
     margin: 10px;
     background-color: #f2f2f2;
     border-radius: 5px;
@@ -24,6 +25,18 @@
     margin-bottom: 10px;
     padding: 10px;
   }
+
+   .card#pending {
+    border-left: 6px solid #b5babe;
+  }
+
+  .card#inProgress {
+    border-left: 6px solid #86b6fe;
+  }
+
+  .card#completed {
+    border-left: 6px solid #8cc4ac;
+  }
   
   /* Define styles for headings */
   h1 {
@@ -32,7 +45,7 @@
   
   /* Define styles for buttons */
   button {
-    background-color: #008CBA;
+    /* background-color: #008CBA; */
     border: none;
     color: white;
     padding: 10px;

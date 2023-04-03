@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,28 +8,30 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  todoList:string[] = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  faCoffee = faCoffee;
+
+  pendingList:string[] = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
   inProgressList:string[] = ['Walk dog'];
-  doneList:string[] = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail'];
+  completedList:string[] = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail'];
 
   addTask(task: string, listType: string) {
     console.log('task', task);
-    if (listType === 'todo') {
-      this.todoList.push(task);
-    } else if (listType === 'doing') {
+    if (listType === 'pending') {
+      this.pendingList.push(task);
+    } else if (listType === 'inProgress') {
       this.inProgressList.push(task);
-    } else if (listType === 'done') {
-      this.doneList.push(task);
+    } else if (listType === 'completed') {
+      this.completedList.push(task);
     }
   }
 
   deleteTask(task: string, listType: string) {
-    if (listType === 'todo') {
-      this.todoList.splice(this.todoList.indexOf(task), 1);
-    } else if (listType === 'doing') {
+    if (listType === 'pending') {
+      this.pendingList.splice(this.pendingList.indexOf(task), 1);
+    } else if (listType === 'inProgress') {
       this.inProgressList.splice(this.inProgressList.indexOf(task), 1);
-    } else if (listType === 'done') {
-      this.doneList.splice(this.doneList.indexOf(task), 1);
+    } else if (listType === 'completed') {
+      this.completedList.splice(this.completedList.indexOf(task), 1);
     }
   }
 

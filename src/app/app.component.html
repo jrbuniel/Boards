@@ -4,24 +4,25 @@
 </div>
 
 <div class="content">
-  <h1>Project #1</h1>
+  <h1>Project #1 <fa-icon [icon]="faCoffee"></fa-icon></h1>
   <div class="container"
        cdkDropListGroup>
 
-    <div class="column" 
+    <div class="column"
          cdkDropList
-         [cdkDropListData]="todoList"
+         [cdkDropListData]="pendingList"
          (cdkDropListDropped)="drop($event)">
-      <h2>To Do</h2>
-      <div *ngFor="let task of todoList" 
+      <h2>Pending</h2>
+      <div *ngFor="let task of pendingList" 
            class="card"
+           id="pending"
            cdkDrag>
         <p>{{task}}</p>
       </div>
 
-      <button (click)="addTask(newToDoTask.value, 'todo'); newToDoTask.value=''">Add task</button>
+      <!-- <button (click)="addTask(newPendingTask.value, 'todo'); newPendingTask.value=''">Add task</button>
       <br>
-      <input type="text" #newToDoTask placeholder="Enter task name...">
+      <input type="text" #newPendingTask placeholder="Enter task name..."> -->
     </div>
 
     <div class="column" 
@@ -31,27 +32,31 @@
       <h2>In Progress</h2>
       <div *ngFor="let task of inProgressList" 
            class="card"
+           id="inProgress"
            cdkDrag>
         <p>{{task}}</p>
       </div>
-      <button (click)="addTask(newInProgressTask.value, 'doing'); newInProgressTask.value=''">Add task</button>
+
+      <!-- <button (click)="addTask(newInProgressTask.value, 'doing'); newInProgressTask.value=''">Add task</button>
       <br>
-      <input type="text" #newInProgressTask placeholder="Enter task name...">
+      <input type="text" #newInProgressTask placeholder="Enter task name..."> -->
     </div>
 
-    <div class="column" 
+    <div class="column"
          cdkDropList
-         [cdkDropListData]="doneList"
+         [cdkDropListData]="completedList"
          (cdkDropListDropped)="drop($event)">
-      <h2>Done</h2>
-      <div *ngFor="let task of doneList" 
+      <h2>Completed</h2>
+      <div *ngFor="let task of completedList" 
            class="card"
+           id="completed"
            cdkDrag>
         <p>{{task}}</p>
       </div>
-      <button (click)="addTask(newDoneTask.value, 'done'); newDoneTask.value=''">Add task</button>
+      
+      <!-- <button (click)="addTask(newCompletedTask.value, 'completed'); newCompletedTask.value=''">Add task</button>
       <br>
-      <input type="text" #newDoneTask placeholder="Enter task name...">
+      <input type="text" #newCompletedTask placeholder="Enter task name..."> -->
     </div>
 
   </div>
