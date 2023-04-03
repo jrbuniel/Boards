@@ -7,9 +7,9 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  todoList:string[] = [];
-  inProgressList:string[] = [];
-  doneList:string[] = [];
+  todoList:string[] = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  inProgressList:string[] = ['Walk dog'];
+  doneList:string[] = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail'];
 
   addTask(task: string, listType: string) {
     console.log('task', task);
