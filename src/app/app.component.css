@@ -1,0 +1,102 @@
+/* Define styles for container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+
+  /* Define styles for columns */
+  .column {
+    flex: 1;
+    min-width: 300px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  /* Define styles for cards */
+  .card {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  /* Define styles for headings */
+  h1 {
+    text-align: center;
+  }
+  
+  /* Define styles for buttons */
+  button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Define styles for input fields */
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #008CBA;
+    border-radius: 5px;
+  }
+
+/* Style for desktop screens */
+.sidebar {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  .sidebar a:hover {
+    background-color: #555;
+    color: white;
+  }
+  
+  .content {
+    margin-left: 200px; /* Same width as the sidebar */
+    padding: 0px 10px;
+  }
+  
+  /* Style for mobile screens */
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    .sidebar a {
+      float: left;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
