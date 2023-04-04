@@ -13,16 +13,22 @@
          [cdkDropListData]="pendingList"
          (cdkDropListDropped)="drop($event)">
       <h2>Pending</h2>
+
+      <div *ngIf="!addPendingClicked"
+           class="card"
+           id="plus"
+           (click)="addClicked('pending')">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </div>
+
+      <input *ngIf="addPendingClicked" type="text" #newPendingTask (keyup.enter)="addTask(newPendingTask.value, 'pending'); newPendingTask.value=''" placeholder="Enter task name...">
+
       <div *ngFor="let task of pendingList" 
            class="card"
            id="pending"
            cdkDrag>
         <p>{{task}}</p>
       </div>
-
-      <!-- <button (click)="addTask(newPendingTask.value, 'todo'); newPendingTask.value=''">Add task</button>
-      <br>
-      <input type="text" #newPendingTask placeholder="Enter task name..."> -->
     </div>
 
     <div class="column" 
@@ -30,16 +36,22 @@
          [cdkDropListData]="inProgressList"
          (cdkDropListDropped)="drop($event)">
       <h2>In Progress</h2>
+
+      <div *ngIf="!addInProgressClicked"
+           class="card"
+           id="plus"
+           (click)="addClicked('inProgress')">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </div>
+
+      <input *ngIf="addInProgressClicked" type="text" #newInProgressTask (keyup.enter)="addTask(newInProgressTask.value, 'inProgress'); newInProgressTask.value=''" placeholder="Enter task name...">
+
       <div *ngFor="let task of inProgressList" 
            class="card"
            id="inProgress"
            cdkDrag>
         <p>{{task}}</p>
       </div>
-
-      <!-- <button (click)="addTask(newInProgressTask.value, 'doing'); newInProgressTask.value=''">Add task</button>
-      <br>
-      <input type="text" #newInProgressTask placeholder="Enter task name..."> -->
     </div>
 
     <div class="column"
@@ -47,16 +59,22 @@
          [cdkDropListData]="completedList"
          (cdkDropListDropped)="drop($event)">
       <h2>Completed</h2>
+
+      <div *ngIf="!addCompletedClicked"
+           class="card"
+           id="plus"
+           (click)="addClicked('completed')">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </div>
+
+      <input *ngIf="addCompletedClicked" type="text" #newCompletedTask (keyup.enter)="addTask(newCompletedTask.value, 'completed'); newCompletedTask.value=''" placeholder="Enter task name...">
+
       <div *ngFor="let task of completedList" 
            class="card"
            id="completed"
            cdkDrag>
         <p>{{task}}</p>
       </div>
-      
-      <!-- <button (click)="addTask(newCompletedTask.value, 'completed'); newCompletedTask.value=''">Add task</button>
-      <br>
-      <input type="text" #newCompletedTask placeholder="Enter task name..."> -->
     </div>
 
   </div>

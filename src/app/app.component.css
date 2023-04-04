@@ -26,7 +26,7 @@
     padding: 10px;
   }
 
-   .card#pending {
+  .card#pending {
     border-left: 6px solid #b5babe;
   }
 
@@ -36,6 +36,22 @@
 
   .card#completed {
     border-left: 6px solid #8cc4ac;
+  }
+
+  .card#plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .plus-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
   }
   
   /* Define styles for headings */
