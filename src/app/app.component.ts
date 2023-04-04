@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { faCoffee, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateTaskComponent } from './create-task/create-task.component';
+
+interface Task {
+  Name: string;
+  IsHovered?: boolean;
+  IsEditClicked?: boolean;
+}
 
 @Component({
   selector: 'app-root',
@@ -12,10 +17,15 @@ import { CreateTaskComponent } from './create-task/create-task.component';
 export class AppComponent {
   faCoffee = faCoffee;
   faPlus = faPlus;
+  faEdit = faEdit;
+  faTrash = faTrash;
 
-  pendingList:string[] = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  inProgressList:string[] = ['Walk dog'];
-  completedList:string[] = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail'];
+  isHidden: boolean = false;
+  isEditClicked: boolean = false;
+
+  pendingList:Task[] = [{ Name: 'Get to work' }, { Name: 'Pick up groceries' }, { Name: 'Go home' }, { Name: 'Fall asleep' }];
+  inProgressList:Task[] = [{ Name: 'Walk dog' }];
+  completedList:Task[] = [{ Name: 'Get up' }, { Name: 'Brush teeth' }, { Name: 'Take a shower' }, { Name: 'Check e-mail' }];
 
   addPendingClicked: boolean = false;
   addInProgressClicked: boolean = false;
@@ -33,32 +43,39 @@ export class AppComponent {
     }
   }
 
-  openModal() {
-    const dialogRef = this.dialog.open(CreateTaskComponent, {
-      height: '500px',
-      width: '800px',
-      data: ''
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
   addTask(task: string, listType: string) {
     if (listType === 'pending') {
-      this.pendingList.push(task);
+      this.pendingList.push({ Name : task });
       this.addPendingClicked = false;
     } else if (listType === 'inProgress') {
-      this.inProgressList.push(task);
+      this.inProgressList.push({ Name : task });
       this.addInProgressClicked = false;
     } else if (listType === 'completed') {
-      this.completedList.push(task);
+      this.completedList.push({ Name : task });
       this.addCompletedClicked = false;
     }
   }
 
-  deleteTask(task: string, listType: string) {
+  editTask(editedTaskName: string, index: number, listType: string) {
+    if (listType === 'pending') {
+      let task = this.pendingList[index];
+      task.Name = editedTaskName;
+      task.IsHovered = false;
+      task.IsEditClicked = false;
+    } else if (listType === 'inProgress') {
+      let task = this.inProgressList[index];
+      task.Name = editedTaskName;
+      task.IsHovered = false;
+      task.IsEditClicked = false;
+    } else if (listType === 'completed') {
+      let task = this.completedList[index];
+      task.Name = editedTaskName;
+      task.IsHovered = false;
+      task.IsEditClicked = false;
+    }
+  }
+
+  deleteTask(task: Task, listType: string) {
     if (listType === 'pending') {
       this.pendingList.splice(this.pendingList.indexOf(task), 1);
     } else if (listType === 'inProgress') {
@@ -68,7 +85,7 @@ export class AppComponent {
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
