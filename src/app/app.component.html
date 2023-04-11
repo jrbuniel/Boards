@@ -58,7 +58,7 @@
            cdkDrag
            (mouseenter)="task.IsHovered = true" (mouseleave)="task.IsHovered = false">
           <div style="padding: 15px;"><ng-container *ngIf="!task.IsEditClicked">{{task.Name}}</ng-container>
-            <fa-icon *ngIf="task.IsHovered && !task.IsEditClicked" style="float:right; padding-left: 20px; color: #d3d3d3;" (click)="deleteTask(task, 'pending')" [icon]="faTrash"></fa-icon>
+            <fa-icon *ngIf="task.IsHovered && !task.IsEditClicked" style="float:right; padding-left: 20px; color: #d3d3d3;" (click)="deleteTask(task, 'inProgress')" [icon]="faTrash"></fa-icon>
             <fa-icon *ngIf="task.IsHovered && !task.IsEditClicked" style="float:right; color: #d3d3d3;" (click)="task.IsEditClicked=true" [icon]="faEdit"></fa-icon> 
 
             <input *ngIf="task.IsEditClicked" type="text" #editedTask (keyup.enter)="editTask(editedTask.value, i, 'inProgress'); editedTask.value=''" value="{{task.Name}}" placeholder="Enter task name...">
@@ -84,10 +84,10 @@
       <div *ngFor="let task of completedList; let i = index" 
            class="card"
            id="completed"
-           cdkDra
+           cdkDrag
            (mouseenter)="task.IsHovered = true" (mouseleave)="task.IsHovered = false"g>
           <div style="padding: 15px;"><ng-container *ngIf="!task.IsEditClicked">{{task.Name}}</ng-container>
-            <fa-icon *ngIf="task.IsHovered && !task.IsEditClicked" style="float:right; padding-left: 20px; color: #d3d3d3;" (click)="deleteTask(task, 'pending')" [icon]="faTrash"></fa-icon>
+            <fa-icon *ngIf="task.IsHovered && !task.IsEditClicked" style="float:right; padding-left: 20px; color: #d3d3d3;" (click)="deleteTask(task, 'completed')" [icon]="faTrash"></fa-icon>
             <fa-icon *ngIf="task.IsHovered && !task.IsEditClicked" style="float:right; color: #d3d3d3;" (click)="task.IsEditClicked=true" [icon]="faEdit"></fa-icon> 
 
             <input *ngIf="task.IsEditClicked" type="text" #editedTask (keyup.enter)="editTask(editedTask.value, i, 'completed'); editedTask.value=''" value="{{task.Name}}" placeholder="Enter task name...">
