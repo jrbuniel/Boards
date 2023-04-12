@@ -20,12 +20,10 @@
            (click)="addClicked('pending')">
         <fa-icon [icon]="faPlus"></fa-icon>
       </div>
-
       <input *ngIf="addPendingClicked" type="text" #newPendingTask (keyup.enter)="addTask(newPendingTask.value, 'pending'); newPendingTask.value=''" placeholder="Enter task name...">
 
       <div *ngFor="let task of pendingList; let i = index"
-           class="card"
-           id="pending"
+           class="card pending"
            cdkDrag
            (mouseenter)="task.IsHovered = true" (mouseleave)="task.IsHovered = false">
           <div style="padding: 15px;"><ng-container *ngIf="!task.IsEditClicked">{{task.Name}}</ng-container>
@@ -49,12 +47,10 @@
            (click)="addClicked('inProgress')">
         <fa-icon [icon]="faPlus"></fa-icon>
       </div>
-
       <input *ngIf="addInProgressClicked" type="text" #newInProgressTask (keyup.enter)="addTask(newInProgressTask.value, 'inProgress'); newInProgressTask.value=''" placeholder="Enter task name...">
 
       <div *ngFor="let task of inProgressList; let i = index" 
-           class="card"
-           id="inProgress"
+           class="card inProgress"
            cdkDrag
            (mouseenter)="task.IsHovered = true" (mouseleave)="task.IsHovered = false">
           <div style="padding: 15px;"><ng-container *ngIf="!task.IsEditClicked">{{task.Name}}</ng-container>
@@ -78,12 +74,10 @@
            (click)="addClicked('completed')">
         <fa-icon [icon]="faPlus"></fa-icon>
       </div>
-
       <input *ngIf="addCompletedClicked" type="text" #newCompletedTask (keyup.enter)="addTask(newCompletedTask.value, 'completed'); newCompletedTask.value=''" placeholder="Enter task name...">
 
       <div *ngFor="let task of completedList; let i = index" 
-           class="card"
-           id="completed"
+           class="card completed"
            cdkDrag
            (mouseenter)="task.IsHovered = true" (mouseleave)="task.IsHovered = false"g>
           <div style="padding: 15px;"><ng-container *ngIf="!task.IsEditClicked">{{task.Name}}</ng-container>

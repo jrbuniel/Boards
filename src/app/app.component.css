@@ -26,15 +26,15 @@
     padding: 10px;
   }
 
-  .card#pending {
+  .pending {
     border-left: 6px solid #b5babe;
   }
 
-  .card#inProgress {
+  .inProgress {
     border-left: 6px solid #86b6fe;
   }
 
-  .card#completed {
+  .completed {
     border-left: 6px solid #8cc4ac;
   }
 
